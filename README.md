@@ -12,3 +12,6 @@ npm run dev
 # Styled Components
 - npm i styled-components
 - npm i @types/styled-components -D
+
+# Routes
+npm i react-router-dom
