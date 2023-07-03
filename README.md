@@ -15,3 +15,6 @@ npm run dev
 
 # Routes
 npm i react-router-dom
+
+## Phosphor-react
+npm i phosphor-react
