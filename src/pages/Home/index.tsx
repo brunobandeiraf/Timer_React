@@ -35,7 +35,7 @@ export function Home() {
 
   // watch fica observando determinado campo
   // const task = watch('task')
-  const { register, handleSubmit, watch } = useForm<NewCycleFormData>({
+  const { register, handleSubmit, watch, reset} = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),
     // Valor inicial de cada campo
     defaultValues: {
@@ -47,6 +47,7 @@ export function Home() {
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     console.log(data)
+    reset() // Redefine os valares, conforme o defaultValues
   }
 
   const task = watch('task')
