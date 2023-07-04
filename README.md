@@ -18,3 +18,6 @@ npm i react-router-dom
 
 ## Phosphor-react
 npm i phosphor-react
+
+## React Hook Form
+npm i react-hook-form
