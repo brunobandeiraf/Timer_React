@@ -21,3 +21,7 @@ npm i phosphor-react
 
 ## React Hook Form
 npm i react-hook-form
+
+## Biblioteca de Validação de Form
+- npm i zod
+- npm i @hookform/resolvers
