@@ -26,6 +26,8 @@ export const FormContainer = styled.div`
   font-weight: bold;
   flex-wrap: wrap;// Quebrar os campos entre linhas se reduzir tamanho
 `
+
+// Estilo base - utilizado para criar outros componentes
 const BaseInput = styled.input`
   background: transparent;
   height: 2.5rem;
@@ -46,6 +48,10 @@ const BaseInput = styled.input`
 
 export const TaskInput = styled(BaseInput)`
   flex: 1;
+
+  &::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
 `
 
 export const MinutesAmountInput = styled(BaseInput)`
@@ -87,11 +93,11 @@ export const StartCountdownButton = styled.button`
   cursor: pointer;
   background: ${(props) => props.theme['green-500']};
   color: ${(props) => props.theme['gray-100']};
-  &:disabled {
+  &:disabled {// Se estiver desabled
     opacity: 0.7;
     cursor: not-allowed;
   }
-  &:not(:disabled):hover {
+  &:not(:disabled):hover {// Se não estiver desabled
     background: ${(props) => props.theme['green-700']};
   }
 `
