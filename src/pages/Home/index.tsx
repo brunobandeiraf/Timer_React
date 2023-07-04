@@ -34,9 +34,9 @@ export function Home() {
             type="number"
             id="minutesAmount"
             placeholder="00"
-            step={5}
-            min={5}
-            max={60}
+            step={5} //5 em 5
+            min={5} // mínimo 5
+            max={60} // máximo 60
           />
 
           <span>minutos.</span>
