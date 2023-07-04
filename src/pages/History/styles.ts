@@ -67,7 +67,7 @@ export const Status = styled.span<StatusProps>`
   align-items: center;
   gap: 0.5rem;
   &::before {
-    content: '';
+    content: ''; // Obrigatório do before
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 9999px;
