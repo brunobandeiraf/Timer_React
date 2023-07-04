@@ -21,6 +21,10 @@ const newCycleFormValidationSchema = zod.object({
     .max(60, 'O ciclo precisa ser de no máximo 60 minutos.'),
 })
 
+// Em vez de utilizar Inteface, 
+// utilizei o Zod para inferir os tipos
+type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
+
 export function Home() {
 
   // register add um input no formulário
@@ -31,11 +35,17 @@ export function Home() {
 
   // watch fica observando determinado campo
   // const task = watch('task')
-  const { register, handleSubmit, watch } = useForm({
+  const { register, handleSubmit, watch } = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),
+    // Valor inicial de cada campo
+    defaultValues: {
+      task: '',
+      minutesAmount: 0,
+    },
   })
 
-  function handleCreateNewCycle(data: any) {
+
+  function handleCreateNewCycle(data: NewCycleFormData) {
     console.log(data)
   }
 
