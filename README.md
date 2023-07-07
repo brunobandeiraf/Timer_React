@@ -25,3 +25,6 @@ npm i react-hook-form
 ## Biblioteca de Validação de Form
 - npm i zod
 - npm i @hookform/resolvers
+
+## Calcular diferença entre datas em segundos
+npm i date-fns
