@@ -16,6 +16,9 @@ import {
   TaskInput,
 } from './styles'
 
+import { NewCycleForm } from './components/NewCycleForm'
+import { Countdown } from './components/Countdown'
+
 const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1, 'Informe a tarefa'),
   minutesAmount: zod
@@ -85,7 +88,7 @@ export function Home() {
             }),
           )
 
-          setAmountSecondsPassed(totalSeconds)
+          setAmountSecondsPassed(totalSeconds) // Inserir zero no contador ao final
           clearInterval(interval)
         } else {
           setAmountSecondsPassed(secondsDifference)
@@ -100,7 +103,7 @@ export function Home() {
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     const id = String(new Date().getTime())
-    
+
     const newCycle: Cycle = {
       id,
       task: data.task,
@@ -154,46 +157,8 @@ export function Home() {
   return (
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCycle)}>
-        <FormContainer>
-          <label htmlFor="task">Vou trabalhar em</label>
-          <TaskInput
-            id="task"
-            list="task-suggestions"
-            placeholder="Dê um nome para o seu projeto"
-            disabled={!!activeCycle}
-            {...register('task')}
-          />
-
-          <datalist id="task-suggestions">
-            <option value="Projeto 1" />
-            <option value="Projeto 2" />
-            <option value="Projeto 3" />
-            <option value="Banana" />
-          </datalist>
-
-          <label htmlFor="minutesAmount">durante</label>
-          <MinutesAmountInput
-            type="number"
-            id="minutesAmount"
-            placeholder="00"
-            step={5} //5 em 5
-            min={5} // mínimo 5
-            max={60} // máximo 60
-            disabled={!!activeCycle} // Altera o tipo boolean
-            // valueAsNumber - defino como somente número
-            {...register('minutesAmount', { valueAsNumber: true })}
-          />
-
-          <span>minutos.</span>
-        </FormContainer>
-
-        <CountdownContainer>
-          <span>{minutes[0]}</span>
-          <span>{minutes[1]}</span>
-          <Separator>:</Separator>
-          <span>{seconds[0]}</span>
-          <span>{seconds[1]}</span>
-        </CountdownContainer>
+        <NewCycleForm /> 
+        <Countdown />
 
         {activeCycle ? (
           <StopCountdownButton onClick={handleInterruptCycle} type="button">
