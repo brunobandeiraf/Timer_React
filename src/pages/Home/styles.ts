@@ -72,6 +72,7 @@ export const CountdownContainer = styled.div`
     border-radius: 8px;
   }
 `
+
 export const Separator = styled.div`
   padding: 2rem 0;
   color: ${(props) => props.theme['green-500']};
@@ -81,24 +82,42 @@ export const Separator = styled.div`
   justify-content: center;
 `
 
-export const StartCountdownButton = styled.button`
+export const BaseCountdownButton = styled.button`
   width: 100%;
   border: 0;
   padding: 1rem;
   border-radius: 8px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  color: ${(props) => props.theme['gray-100']};
+
   gap: 0.5rem;
   font-weight: bold;
+
   cursor: pointer;
-  background: ${(props) => props.theme['green-500']};
-  color: ${(props) => props.theme['gray-100']};
-  &:disabled {// Se estiver desabled
+
+  &:disabled {// Se estiver disabled
     opacity: 0.7;
     cursor: not-allowed;
   }
-  &:not(:disabled):hover {// Se não estiver desabled
+`
+
+// Está utilizando o BaseCountdownButton + algo a mais
+export const StartCountdownButton = styled(BaseCountdownButton)`
+  background: ${(props) => props.theme['green-500']};
+  color: ${(props) => props.theme['gray-100']};
+
+  &:not(:disabled):hover {// Se não estiver disabled
     background: ${(props) => props.theme['green-700']};
+  }
+`
+
+// Está utilizando o BaseCountdownButton + algo a mais
+export const StopCountdownButton = styled(BaseCountdownButton)`
+  background: ${(props) => props.theme['red-500']};
+  &:not(:disabled):hover {
+    background: ${(props) => props.theme['red-700']};
   }
 `
